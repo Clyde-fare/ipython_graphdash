@@ -1,5 +1,5 @@
-#! /usr/bin/python
-import re, os , fnmatch, json
+#!/usr/bin/env python
+import re, os , fnmatch, json, sys
 from collections import OrderedDict
 from IPython.html.services.notebooks.filenbmanager import FileNotebookManager
 from tornado.web import HTTPError
@@ -17,7 +17,7 @@ def extract_nb_links(markdown_cells):
     Returns
     -------
     nb_links  :  list
-        The list of links to other notebooks in the markdown cells passed to the function"""
+        The list of unicode links to other notebooks in the markdown cells passed to the function"""
     
     nb_link_extractor = re.compile("(?<=\]\()\S+ipynb")  
     nb_link_finds = [nb_link_extractor.findall(cell['source']) for cell in markdown_cells]
@@ -98,11 +98,13 @@ def get_project_graph(path=''):
     starting with all notebooks in the current directory and recursively searching all sub directories"""
     
     nb_paths = []
+    #allows non-ascii characters in file names
+    fs_encoding = sys.getfilesystemencoding()
     for root, dirnames, filenames in os.walk(path):
         for filename in fnmatch.filter(filenames, '*.ipynb'):
-            #using unicode and realpath because full_nb_paths() generates unicode fullpaths
+            #using unicode and realpath because extract_nb_links() returns a list of unicode links
             if '.ipynb_checkpoints' not in root:
-                nb_paths.append(unicode(os.path.realpath(os.path.join(root, filename))))
+                nb_paths.append(unicode(os.path.realpath(os.path.join(root, filename)), fs_encoding))
    
     project_graph = OrderedDict()
     for nb_file_path in nb_paths:
