@@ -60,57 +60,57 @@
         {
             "group": 3,
             "name": "Final",
-            "url": "tree/test_cases/test_project_tree_v2/Final.ipynb"
+            "url": "tree/Final.ipynb"
         },
         {
             "group": 0,
             "name": "analysis",
-            "url": "tree/test_cases/test_project_tree_v2/analysis.ipynb"
+            "url": "tree/analysis.ipynb"
         },
         {
             "group": 3,
             "name": "calculations_3",
-            "url": "tree/test_cases/test_project_tree_v2/calculations_3.ipynb"
+            "url": "tree/calculations_3.ipynb"
         },
         {
             "group": 3,
             "name": "calculations",
-            "url": "tree/test_cases/test_project_tree_v2/calculations.ipynb"
+            "url": "tree/calculations.ipynb"
         },
         {
             "group": 3,
             "name": "calculations_2",
-            "url": "tree/test_cases/test_project_tree_v2/calculations_2.ipynb"
+            "url": "tree/calculations_2.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_1",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_1.ipynb"
+            "url": "tree/dead_end_1.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_2",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_2.ipynb"
+            "url": "tree/dead_end_2.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_3",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_3.ipynb"
+            "url": "tree/dead_end_3.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_4",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_4.ipynb"
+            "url": "tree/dead_end_4.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_5",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_5.ipynb"
+            "url": "tree/dead_end_5.ipynb"
         },
         {
             "group": 1,
             "name": "dead_end_6",
-            "url": "tree/test_cases/test_project_tree_v2/dead_end_6.ipynb"
+            "url": "tree/dead_end_6.ipynb"
         }
     ]
 }

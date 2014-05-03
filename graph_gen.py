@@ -79,14 +79,11 @@ def get_linked_nbs(nb_file_path, project_graph=None):
         project_graph = OrderedDict()
      
     markdown_cells = get_markdown_cells(nb_file_path)
-    rel_nb_links = list(extract_nb_links(markdown_cells))
+    rel_nb_links = extract_nb_links(markdown_cells)
     
     #local notebook links are relative to the directory they are in
     active_dir = os.path.dirname(nb_file_path)    
-    local_nb_links = sorted([os.path.join(active_dir, rel_nb_link) for rel_nb_link in rel_nb_links if not 'http' in rel_nb_link])
-    web_nb_links =   sorted([rel_nb_link for rel_nb_link in rel_nb_links if 'http' in rel_nb_link])
-    nb_links = local_nb_links + web_nb_links
-    
+    nb_links = sorted([os.path.join(active_dir, rel_nb_link) for rel_nb_link in rel_nb_links if not 'http' in rel_nb_link])
     project_graph.update({nb_file_path:nb_links})
     
     for nb_file_path in nb_links:
@@ -116,9 +113,7 @@ def get_project_graph(path=''):
 def get_nb_group(nb_name, nb_path):
     """Hacked together trial function to assign colours to notebooks"""
 
-    if 'http' in nb_path:
-        return 2
-    elif 'dead' in nb_name:
+    if 'dead' in nb_name:
         return 1
     elif 'analysis' in nb_name:
         return 0
@@ -133,10 +128,7 @@ def get_json(project_graph):
     
     for nb_path in project_graph:
         nb_name = os.path.basename(nb_path).replace('.ipynb','')
-        if 'http' not in nb_path:
-            rel_nb_path = 'tree/' + os.path.relpath(nb_path)
-        else:
-            rel_nb_path = nb_path
+        rel_nb_path = 'tree/' + os.path.relpath(nb_path)
             
         linked_nb_paths = project_graph[nb_path]
         
@@ -148,10 +140,7 @@ def get_json(project_graph):
         
         for linked_nb_path in linked_nb_paths:
             linked_nb_name = os.path.basename(linked_nb_path).replace('.ipynb','')
-            if 'http' not in linked_nb_path:
-                linked_rel_nb_path = 'tree/' + os.path.relpath(linked_nb_path)
-            else:
-                linked_rel_nb_path = linked_nb_path
+            linked_rel_nb_path = 'tree/' + os.path.relpath(linked_nb_path)
                 
             try:
                 link_node = next(n for n in nodes if n.get('name') == linked_nb_name and n.get('url') == linked_rel_nb_path)
@@ -167,8 +156,8 @@ def get_json(project_graph):
 def gen_graph(project_dir, f_nm = 'tree.json'):
     project_graph = get_project_graph(project_dir)
 
-    with open(json_tree, 'w') as json_f:
+    with open(f_nm, 'w') as json_f:
         json_f.write(get_json(project_graph))
 
 if __name__ == '__main__':
-    gen_graph(project_dir='/home/clyde/Project/Notebooks/')
+    gen_graph(project_dir=os.getcwd())
