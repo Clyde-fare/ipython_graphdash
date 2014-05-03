@@ -14,7 +14,7 @@
 
     var graph_button = $('<button/>')
                 .addClass('btn')
-                .attr("title", "Generates a graphical view of the notebooks")
+                .attr("title", "Switch to a graphical view of the notebooks")
                 .append(
                     $("<i/>").addClass("icon-code-fork")
                 );
