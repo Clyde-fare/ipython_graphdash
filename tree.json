@@ -1,0 +1,116 @@
+{
+    "links": [
+        {
+            "source": 0,
+            "target": 1,
+            "value": 1
+        },
+        {
+            "source": 1,
+            "target": 2,
+            "value": 1
+        },
+        {
+            "source": 3,
+            "target": 4,
+            "value": 1
+        },
+        {
+            "source": 4,
+            "target": 2,
+            "value": 1
+        },
+        {
+            "source": 2,
+            "target": 2,
+            "value": 1
+        },
+        {
+            "source": 5,
+            "target": 3,
+            "value": 1
+        },
+        {
+            "source": 6,
+            "target": 3,
+            "value": 1
+        },
+        {
+            "source": 7,
+            "target": 3,
+            "value": 1
+        },
+        {
+            "source": 8,
+            "target": 3,
+            "value": 1
+        },
+        {
+            "source": 9,
+            "target": 4,
+            "value": 1
+        },
+        {
+            "source": 10,
+            "target": 2,
+            "value": 1
+        }
+    ],
+    "nodes": [
+        {
+            "group": 3,
+            "name": "Final",
+            "url": "tree/test_cases/test_project_tree_v2/Final.ipynb"
+        },
+        {
+            "group": 0,
+            "name": "analysis",
+            "url": "tree/test_cases/test_project_tree_v2/analysis.ipynb"
+        },
+        {
+            "group": 3,
+            "name": "calculations_3",
+            "url": "tree/test_cases/test_project_tree_v2/calculations_3.ipynb"
+        },
+        {
+            "group": 3,
+            "name": "calculations",
+            "url": "tree/test_cases/test_project_tree_v2/calculations.ipynb"
+        },
+        {
+            "group": 3,
+            "name": "calculations_2",
+            "url": "tree/test_cases/test_project_tree_v2/calculations_2.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_1",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_1.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_2",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_2.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_3",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_3.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_4",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_4.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_5",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_5.ipynb"
+        },
+        {
+            "group": 1,
+            "name": "dead_end_6",
+            "url": "tree/test_cases/test_project_tree_v2/dead_end_6.ipynb"
+        }
+    ]
+}
