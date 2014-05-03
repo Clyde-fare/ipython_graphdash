@@ -1,3 +1,4 @@
+#! /usr/bin/python
 import re, os , fnmatch, json
 from collections import OrderedDict
 from IPython.html.services.notebooks.filenbmanager import FileNotebookManager
