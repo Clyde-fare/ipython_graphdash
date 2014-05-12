@@ -49,6 +49,6 @@
  */
 $([IPython.events]).on('sessions_loaded.Dashboard', function(){
 	require(['//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js'])
-	require(['custom/map_gen'])
-        require(['custom/map_view']);
+	require(['custom/map_view/map_gen'])
+        require(['custom/map_view/map_view']);
 });
