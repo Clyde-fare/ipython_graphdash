@@ -15,6 +15,8 @@ var map_gen = function (){
           .attr("width", width)
           .attr("height", height)
       
+      var tree_fn = "/files/tree.json?v=" + Math.floor(Math.random() * 100) 
+
       d3.json("/files/tree.json", function(error, graph) {
         force
             .nodes(graph.nodes)

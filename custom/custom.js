@@ -49,6 +49,11 @@
  */
 $([IPython.events]).on('sessions_loaded.Dashboard', function(){
 	require(['//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js'])
+        require(['custom/map_view/basic_kernel'])
+        require(['custom/map_view/tree_gen'])
 	require(['custom/map_view/map_gen'])
         require(['custom/map_view/map_view']);
+ 
+        //set refresh button to also regenerate the tree       
+        $('#refresh_notebook_list')[0].onclick = function(){setTimeout(IPython.tree_gen(),150)}
 });
