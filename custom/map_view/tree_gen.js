@@ -1,8 +1,8 @@
 var IPython = (function (IPython) {
 
-    var tree_gen = function(){
+    var tree_gen = function(callback){
+        callback = callback ||  $.noop
         $.ajaxSetup({async:false})
-        //var python_code = "import os\n\nos.system('~/.ipython/profile_default/static/custom/map_view/tree_gen.py')"
 
         $.get('/static/custom/map_view/tree_gen.py', function(python_code) {
             python_code += '\ngen_graph(project_dir=os.getcwd())'
@@ -14,13 +14,14 @@ var IPython = (function (IPython) {
             dash_kernel._kernel_started({kernel_id: dash_kernel_id, ws_url: ws_url})
 
             var close_kernel = function(){
-                $.ajax({ type: 'DELETE', url: '/api/kernels/' + dash_kernel_id, })
+                $.ajax({ type: 'DELETE', url: '/api/kernels/' + dash_kernel_id}).then(callback())
             }           
      
             var run_code = function(){
                 dash_kernel.execute(python_code, {'execute_reply': close_kernel})
             }
-        
+            
+            //async issues
             setTimeout(run_code,150)
         
             $.ajaxSetup({async:true})
