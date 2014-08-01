@@ -156,11 +156,17 @@ def get_json(project_graph):
             
     return json.dumps({'nodes':nodes, 'links':links}, sort_keys=True,indent=4, separators=(',', ': '))
 
+
 def gen_graph(project_dir, f_nm = 'tree.json'):
     project_graph = get_project_graph(project_dir)
 
     with open(f_nm, 'w') as json_f:
         json_f.write(get_json(project_graph))
+
+
+def simple_archive(list_nbs, name):
+    tar_command = "tar -cvf " + name + ".tar " + " ".join(list_nbs)
+    os.system(tar_command)
 
 if __name__ == '__main__':
     gen_graph(project_dir=os.getcwd())
