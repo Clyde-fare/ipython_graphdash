@@ -2,8 +2,8 @@ var IPython = (function(IPython){
       var map_gen = function(){
           var width = 960,
               height = 700,
-              fill = d3.scale.category10(),
-              nodes = d3.range(100).map(Object);
+              fill = d3.scale.category10();
+             // nodes = d3.range(100).map(Object);
       
           var color = d3.scale.category20();
           
@@ -60,15 +60,34 @@ var IPython = (function(IPython){
                     //deselect/select notebook
                     if (d.selected) {
                         d3.select(this).select("circle").transition()
-                            .duration(350)
+                            .duration(250)
                             .attr("r", 5)
                             .style("stroke", "#fff")
                             .style("stroke-width", "1.5px");
                         d.selected = false
+
+                        //loop through other nodes to check if there any nodes still selected
+                        //if not hide the archive button
+                        var len = graph.nodes.length
+                        var selections = false
+                        for (var i = 0; i < len; i++) {
+                            if (graph.nodes[i].selected === true) {
+                                selections = true
+                                break
+                            }
+                        }
+
+                        if (selections === false){
+                           //hide archive button
+                            $('#notebook_toolbar').children('div.span8').children().hide()
+                        }
+
+
+
                     }
                     else {
                         d3.select(this).select("circle").transition()
-                            .duration(350)
+                            .duration(250)
                             .attr("r", 6)
                             .style("stroke", "#ff0000")
                             .style("stroke-width", "3px");
