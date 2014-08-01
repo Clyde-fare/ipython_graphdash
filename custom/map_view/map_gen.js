@@ -73,6 +73,9 @@ var IPython = (function(IPython){
                             .style("stroke", "#ff0000")
                             .style("stroke-width", "3px");
                         d.selected = true
+
+                        //show archive button
+                        $('#notebook_toolbar').children('div.span8').children().show()
                     }
                 }
                 else {
@@ -82,14 +85,6 @@ var IPython = (function(IPython){
                 }
             }
           });
-
-
-          function dblclick() {
-            d3.select(this).select("circle").transition()
-                .duration(750)
-                .attr("r", 16)
-                .style("fill", "lightsteelblue");
-            }
 
           return svg
     };
