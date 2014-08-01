@@ -27,7 +27,7 @@ var IPython = (function(IPython){
           
             var link = svg.selectAll(".link")
                 .data(graph.links)
-              .enter().append("line")
+                .enter().append("line")
                 .attr("class", "link")
                 .style("stroke-width", function(d) { return Math.sqrt(d.value); });
           
@@ -35,13 +35,14 @@ var IPython = (function(IPython){
                 .data(graph.nodes)
                 .enter().append("a")
                 .attr("class", "node")
-                .attr("xlink:href", function(d) { return d.url; })
-                .attr("target", "_blank")
-                .call(force.drag);
+                //.attr("xlink:href", function(d) {return d.url; })
+                //.attr("target", "_blank")
+                .on("click", click_handler)
+                .call(force.drag)
             node.append("circle")
                 .attr("r", 5)
                 .style("fill", function(d) { return color(d.group); })
-          
+
             node.append("title")
                 .text(function(d) { return d.name; });
           
@@ -53,7 +54,43 @@ var IPython = (function(IPython){
           
               node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
             });
+
+            function click_handler(d){
+                if (event.shiftKey==1) {
+                    //deselect/select notebook
+                    if (d.selected) {
+                        d3.select(this).select("circle").transition()
+                            .duration(350)
+                            .attr("r", 5)
+                            .style("stroke", "#fff")
+                            .style("stroke-width", "1.5px");
+                        d.selected = false
+                    }
+                    else {
+                        d3.select(this).select("circle").transition()
+                            .duration(350)
+                            .attr("r", 6)
+                            .style("stroke", "#ff0000")
+                            .style("stroke-width", "3px");
+                        d.selected = true
+                    }
+                }
+                else {
+                    //open notebook
+                    var win = window.open(d.url, '_blank');
+                    win.focus();
+                }
+            }
           });
+
+
+          function dblclick() {
+            d3.select(this).select("circle").transition()
+                .duration(750)
+                .attr("r", 16)
+                .style("fill", "lightsteelblue");
+            }
+
           return svg
     };
     IPython.map_gen = map_gen
