@@ -70,14 +70,12 @@ var IPython = (function(IPython){
                         //if not hide the archive button
                         var len = graph.nodes.length
                         var selections = false
-                        for (var i = 0; i < len; i++) {
-                            if (graph.nodes[i].selected === true) {
-                                selections = true
-                                break
-                            }
-                        }
 
-                        if (selections === false){
+                        IPython.selected_notebooks = $.grep(IPython.selected_notebooks, function(value) {
+                            return value != d.url;
+                        });
+
+                        if (IPython.selected_notebooks.length === 0){
                            //hide archive button
                             $('#notebook_toolbar').children('div.span8').children().hide()
                         }
@@ -89,6 +87,7 @@ var IPython = (function(IPython){
                             .style("stroke", "#ff0000")
                             .style("stroke-width", "3px");
                         d.selected = true
+                        IPython.selected_notebooks.push(d.url)
 
                         //show archive button
                         $('#notebook_toolbar').children('div.span8').children().show()
@@ -104,6 +103,7 @@ var IPython = (function(IPython){
 
           return svg
     };
+    IPython.selected_notebooks = []
     IPython.map_gen = map_gen
     return IPython
 }(IPython))
