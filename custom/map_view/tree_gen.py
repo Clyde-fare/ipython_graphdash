@@ -164,9 +164,5 @@ def gen_graph(project_dir, f_nm = 'tree.json'):
         json_f.write(get_json(project_graph))
 
 
-def simple_archive(list_nbs, name):
-    tar_command = "tar -cvf " + name + ".tar " + " ".join(list_nbs)
-    os.system(tar_command)
-
 if __name__ == '__main__':
     gen_graph(project_dir=os.getcwd())

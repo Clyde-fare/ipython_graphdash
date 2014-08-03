@@ -81,9 +81,6 @@ var IPython = (function(IPython){
                            //hide archive button
                             $('#notebook_toolbar').children('div.span8').children().hide()
                         }
-
-
-
                     }
                     else {
                         d3.select(this).select("circle").transition()
