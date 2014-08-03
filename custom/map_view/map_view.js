@@ -41,14 +41,17 @@
             $("<i/>").addClass("icon-code-fork")
         );
 
+    graph_button.attr('id', 'graph_view');
+    graph_button.click(gen_graph);
+    $('#notebook_buttons').append(graph_button)
+
     var archive_button = $('<button/>')
         .addClass('btn')
         .attr("title", "Archives selected notebook pages")
         .append('Archive')
 
-    graph_button.attr('id', 'graph_view');
-    graph_button.click(gen_graph);
-    $('#notebook_buttons').append(graph_button)
+    archive_button.attr('id', 'archive');
+    archive_button.click(IPython.archive_gen);
     
     }());
 
