@@ -2,8 +2,9 @@
  * Created by clyde on 03/08/14.
  */
 var IPython = (function(IPython){
-    var archive_gen = function(){
-        var callback = function(){alert('Archived selected pages')}
+    var archive_gen = function(archive_name){
+        $("#archive").attr("disabled", true).addClass('ui-state-disabled');
+        var callback = function(){alert('Archived selected pages'); $("#archive").attr("disabled", false).removeClass('ui-state-disabled');}
         $.ajaxSetup({async:false})
 
         $.get('/static/custom/map_view/archive_gen.py', function(python_code) {
@@ -11,7 +12,7 @@ var IPython = (function(IPython){
             for (var i=0;i<IPython.selected_notebooks.length;i++){
                 list_notebooks.push('"' + IPython.selected_notebooks[i] + '"')
             }
-            python_code += '\nlist_notebooks =[' + list_notebooks.join() +  ']\narchive_gen(list_notebooks)'
+            python_code += '\nlist_notebooks =[' + list_notebooks.join() +  ']\narchive_gen(list_notebooks, "' + archive_name +  '")'
 
             var kernel_response = $.post('/api/kernels')
             var dash_kernel_id = $.parseJSON(kernel_response.responseText).id

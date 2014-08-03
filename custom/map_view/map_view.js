@@ -51,7 +51,7 @@
         .append('Archive')
 
     archive_button.attr('id', 'archive');
-    archive_button.click(IPython.archive_gen);
+    archive_button.click(function(){IPython.archive_gen('archive')});
     
     }());
 

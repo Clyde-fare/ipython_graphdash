@@ -9,6 +9,8 @@ To use copy/append the contents of ipython_graphdash/custom to your IPython prof
 
 Launch an IPython Notebook from within ipython_graphdash/example_tree and click the graphview icon (next to the New Notebook and Refresh icons) to get an idea of what's going on.
 
+To archive a portion of the tree, select the relevant nodes by shift clicking them and then click the archive button.
+
 Hit the refresh notebook list icon if you change your markdown notebook links
 
 Note: Requires IPython 2.x
