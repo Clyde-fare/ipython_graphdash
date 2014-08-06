@@ -66,11 +66,6 @@ var IPython = (function(IPython){
                             .style("stroke-width", "1.5px");
                         d.selected = false
 
-                        //loop through other nodes to check if there any nodes still selected
-                        //if not hide the archive button
-                        var len = graph.nodes.length
-                        var selections = false
-
                         IPython.selected_notebooks = $.grep(IPython.selected_notebooks, function(value) {
                             return value != d.url;
                         });
