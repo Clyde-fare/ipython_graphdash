@@ -1,6 +1,8 @@
 var IPython = (function (IPython) {
 
     var tree_gen = function(callback){
+        $("#refresh_notebook_list").attr("disabled", true).addClass('ui-state-disabled');
+
         callback = callback ||  $.noop
         $.ajaxSetup({async:false})
 
@@ -14,7 +16,7 @@ var IPython = (function (IPython) {
             dash_kernel._kernel_started({kernel_id: dash_kernel_id, ws_url: ws_url})
 
             var close_kernel = function(){
-                $.ajax({ type: 'DELETE', url: '/api/kernels/' + dash_kernel_id}).then(callback())
+                $.ajax({ type: 'DELETE', url: '/api/kernels/' + dash_kernel_id}).then(function(){callback(); $("#refresh_notebook_list").attr("disabled", false).removeClass('ui-state-disabled');})
             }           
      
             var run_code = function(){
