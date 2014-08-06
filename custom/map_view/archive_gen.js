@@ -4,7 +4,12 @@
 var IPython = (function(IPython){
     var archive_gen = function(archive_name){
         $("#archive").attr("disabled", true).addClass('ui-state-disabled');
-        var callback = function(){alert('Archived selected pages'); $("#archive").attr("disabled", false).removeClass('ui-state-disabled');}
+
+        var callback = function(){
+            alert('Archived selected pages');
+            $("#archive").attr("disabled", false).removeClass('ui-state-disabled');
+        }
+
         $.ajaxSetup({async:false})
 
         $.get('/static/custom/map_view/archive_gen.py', function(python_code) {

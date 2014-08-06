@@ -46,14 +46,19 @@
     $('#notebook_buttons').append(graph_button)
 
     var archive_button = $('<button/>')
-        .addClass('btn')
+        .addClass('archive_button')
         .attr("title", "Archives selected notebook pages")
         .append('Archive')
 
+    var archive_prompt = function(){
+        var archive_name = prompt("Enter archive name", "Archive");
+        if (archive_name != null && archive_name != '') {
+            archive_name = archive_name.replace('.zip', '')
+            IPython.archive_gen(archive_name);
+        }
+    }
+
     archive_button.attr('id', 'archive');
-    archive_button.click(function(){IPython.archive_gen('archive')});
-    
-    }());
+    archive_button.click(archive_prompt);
 
-
-
+   }());
